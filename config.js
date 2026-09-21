@@ -16,7 +16,14 @@ export const CURRENCY = "₪"; // shown next to prices
 // Firebase web config. Leave `null` to run in LOCAL MODE
 // (data stays on this device only, no sign-in — good for trying it out).
 // To sync between your phones, follow README.md → "Setup (10 min)".
-export const firebaseConfig = null;
+export const firebaseConfig = {
+  apiKey: "AIzaSyBuDCQyRWXgRvljTcutpH7NURL3ABi0UbA",
+  authDomain: "wishes-c473a.firebaseapp.com",
+  projectId: "wishes-c473a",
+  storageBucket: "wishes-c473a.firebasestorage.app",
+  messagingSenderId: "597591229694",
+  appId: "1:597591229694:web:d18bfbc8e5c4be556d11af",
+};
 /* Example:
 export const firebaseConfig = {
   apiKey: "AIza...",
