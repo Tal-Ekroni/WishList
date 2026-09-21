@@ -36,13 +36,13 @@ on that device only. Good for a feel of it, not for real use.
 
 1. GitHub repo → **Settings → Pages**.
 2. Source: **Deploy from a branch**, branch `main`, folder `/ (root)`. Save.
-3. Your app URL will be `https://<your-username>.github.io/WishList/`.
+3. Your app URL will be `https://tal-ekroni.github.io/WishList/`.
 
 ### 3. Create the Firebase project (free)
 
 1. Go to <https://console.firebase.google.com> → **Add project** (any name, e.g. `wishes`). Analytics off.
 2. **Build → Authentication → Get started → Sign-in method → Google → Enable**. Save.
-3. Still in Authentication → **Settings → Authorized domains → Add domain**: `<your-username>.github.io`.
+3. Still in Authentication → **Settings → Authorized domains → Add domain**: `tal-ekroni.github.io`.
 4. **Build → Firestore Database → Create database** → production mode → pick a region near you.
 5. Firestore → **Rules** tab → paste the contents of `firestore.rules`, edit the two email lines at the top
    to your emails, **Publish**.

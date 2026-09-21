@@ -7,8 +7,8 @@
 // `email` = the Google account each of you signs in with.
 // `birthday` = "MM-DD" (month-day), used for the countdown.
 export const PEOPLE = [
-  { key: "her", name: "Wife", email: "HER_EMAIL@gmail.com", birthday: "01-01", emoji: "💝" },
-  { key: "him", name: "Husband", email: "HIS_EMAIL@gmail.com", birthday: "01-01", emoji: "🎯" },
+  { key: "her", name: "Ronny", email: "ronny6633@gmail.com", birthday: "11-24", emoji: "💝" },
+  { key: "him", name: "Tal", email: "talekroni01@gmail.com", birthday: "06-18", emoji: "🎯" },
 ];
 
 export const CURRENCY = "₪"; // shown next to prices

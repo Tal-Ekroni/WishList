@@ -3,8 +3,8 @@ service cloud.firestore {
   match /databases/{db}/documents {
 
     // ---- EDIT THESE TWO LINES to match config.js ----
-    function herEmail() { return "HER_EMAIL@gmail.com"; }
-    function himEmail() { return "HIS_EMAIL@gmail.com"; }
+    function herEmail() { return "ronny6633@gmail.com"; }
+    function himEmail() { return "talekroni01@gmail.com"; }
     // --------------------------------------------------
 
     function email() { return request.auth.token.email.lower(); }
