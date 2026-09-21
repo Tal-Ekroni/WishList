@@ -1,0 +1,37 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{db}/documents {
+
+    // ---- EDIT THESE TWO LINES to match config.js ----
+    function herEmail() { return "HER_EMAIL@gmail.com"; }
+    function himEmail() { return "HIS_EMAIL@gmail.com"; }
+    // --------------------------------------------------
+
+    function email() { return request.auth.token.email.lower(); }
+    function allowed() { return request.auth != null && (email() == herEmail().lower() || email() == himEmail().lower()); }
+    function role() { return email() == herEmail().lower() ? "her" : "him"; }
+
+    // Wishes: both can read everything; you can only create/edit/delete your own.
+    match /wishes/{id} {
+      allow read: if allowed();
+      allow create: if allowed() && request.resource.data.owner == role();
+      allow update, delete: if allowed() && resource.data.owner == role();
+    }
+
+    // Claims ("planning / got it / given" + secret note) live in a separate collection.
+    // A claim's `owner` is the wish owner. Only the OTHER person can read or write it,
+    // so the wisher can never see what's been bought — even with the DB open in a browser.
+    match /claims/{wishId} {
+      allow read: if allowed() && resource.data.owner != role();
+      allow create, update: if allowed()
+        && request.resource.data.owner != role()
+        && request.resource.data.owner == get(/databases/$(db)/documents/wishes/$(wishId)).data.owner;
+      allow delete: if allowed() && resource.data.owner != role();
+    }
+
+    // Secret notes: one doc per person, private to its author.
+    match /notes/{r} {
+      allow read, write: if allowed() && r == role();
+    }
+  }
+}
